@@ -298,6 +298,7 @@ export default {
   'ui.theme.style.vividDesc': '複数のアクセントカラーをカスタマイズしてより豊かなインターフェースを実現',
   'ui.theme.style.plainDesc': 'ブランドプライマリのみを使用したグレースケールファースト、視覚的なノイズが少ない',
   'ui.theme.darkMode': 'ダークモード',
+  'ui.theme.colorMode.auto': '自動',
   'ui.theme.lightMode': 'ライトモード',
   'components.themeEditor.title': 'テーマ',
   'components.themeEditor.subtitle': 'インターフェイスをカスタマイズしてより快適なワークフローを実現',

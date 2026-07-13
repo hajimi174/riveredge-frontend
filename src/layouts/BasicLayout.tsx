@@ -2386,10 +2386,10 @@ export default function BasicLayout({ children }: { children: React.ReactNode })
 
   /**
   /**
-   * 快速切换暗色/亮色主题
+   * 循环切换主题模式: light → dark → auto → light
    */
   const handleQuickThemeToggle = () => {
-    const nextMode = isDarkMode ? 'light' : 'dark';
+    const nextMode = themeMode === 'light' ? 'dark' : themeMode === 'dark' ? 'auto' : 'light';
     applyTheme(nextMode, undefined, { persist: true });
   };
 
@@ -5078,13 +5078,21 @@ export default function BasicLayout({ children }: { children: React.ReactNode })
             </Dropdown>
           );
 
-          // 快速暗色/亮色切换
+          // 快速切换主题: 浅色 → 深色 → 自动
           actions.push(
-            <Tooltip key="darkMode" title={isDarkMode ? t('ui.theme.lightMode') : t('ui.theme.darkMode')}>
+            <Tooltip key="darkMode" title={
+              themeMode === 'dark' ? t('ui.theme.lightMode') :
+              themeMode === 'auto' ? t('ui.theme.colorMode.auto') :
+              t('ui.theme.darkMode')
+            }>
               <Button
                 type="text"
                 size="small"
-                icon={isDarkMode ? <SunOutlined /> : <MoonOutlined />}
+                icon={
+                  themeMode === 'dark' ? <SunOutlined /> :
+                  themeMode === 'auto' ? <BgColorsOutlined style={{ color: token.colorPrimary }} /> :
+                  <MoonOutlined />
+                }
                 onClick={handleQuickThemeToggle}
               />
             </Tooltip>
