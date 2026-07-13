@@ -16,8 +16,9 @@ import { getThemeFromPreferenceCache } from './userPreferenceStore';
 import { useConfigStore } from './configStore';
 
 const DEFAULT_CONFIG = {
-  colorPrimary: '#1890ff',
-  borderRadius: 6,
+  colorPrimary: '#0958D9',
+  colorBgActiveButton: '#1A69E8',
+  borderRadius: 16,
   fontSize: 14,
   compact: false,
   siderBgColor: '',
@@ -33,6 +34,7 @@ export type ThemeStyle = 'vivid' | 'plain';
 
 export interface ThemeConfig {
   colorPrimary?: string;
+  colorBgActiveButton?: string;
   borderRadius?: number;
   fontSize?: number;
   compact?: boolean;
@@ -46,6 +48,7 @@ export interface ResolvedTheme {
   algorithm: typeof theme.defaultAlgorithm | typeof theme.darkAlgorithm;
   token: {
     colorPrimary?: string;
+    colorBgActiveButton?: string;
     borderRadius?: number;
     fontSize?: number;
     colorBorder?: string;
@@ -172,11 +175,12 @@ function computeResolved(themeMode: ThemeMode, config: ThemeConfig): ResolvedThe
     algorithm,
     token: {
       colorPrimary: config.colorPrimary || DEFAULT_CONFIG.colorPrimary,
+      colorBgActiveButton: !isDark ? '#1A69E8' : undefined,
       borderRadius: config.borderRadius ?? DEFAULT_CONFIG.borderRadius,
       fontSize: config.fontSize ?? DEFAULT_CONFIG.fontSize,
       colorBorder: isDark ? '#303030' : '#d9d9d9',
       /** Card / 次级容器边框：比 Ant Design 默认 (#f0f0f0 / #303030) 深/亮一级，全局统一 */
-      colorBorderSecondary: isDark ? '#424242' : '#d9d9d9',
+      colorBorderSecondary: isDark ? 'transparent' : 'transparent',
       colorSplit: isDark ? '#262626' : '#f0f0f0',
     },
     isDark,

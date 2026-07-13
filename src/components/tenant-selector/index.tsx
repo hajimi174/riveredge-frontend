@@ -121,7 +121,7 @@ const TenantSelector: React.FC<TenantSelectorProps> = ({ headerLightText }) => {
             disabled={isLoading || switching}
           >
             {tenantOptions.map((tenant) => (
-              <Option key={tenant.id} value={String(tenant.id)}>
+              <Option key={tenant.id} value={String(tenant.id)} >
                 <span style={tenantTextStyle}>{tenant.name}</span>
               </Option>
             ))}

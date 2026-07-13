@@ -54,26 +54,30 @@ export const ThemedSegmented = React.forwardRef<HTMLDivElement, ThemedSegmentedP
     const segmentedTheme = useSegmentedComponentTheme({ surfaceBackground });
     return (
       <ConfigProvider theme={segmentedTheme}>
-        <Segmented
-          ref={ref}
-          className={
-            surfaceBackground
-              ? [UNI_TOOLBAR_SEGMENTED_CLASS, className].filter(Boolean).join(' ')
-              : className
-          }
-          style={
-            surfaceBackground
-              ? {
-                  ...getUniToolbarControlShellStyle(token),
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  padding: 2,
-                  ...style,
-                }
-              : style
-          }
-          {...props}
-        />
+        {/* <div className="dashboard-kpi-panel-toolbar" > */}
+          <Segmented
+            ref={ref}
+            className='dashboard-kpi-panel-segmented'
+            size="small"
+            // className={
+            //   surfaceBackground
+            //     ? [UNI_TOOLBAR_SEGMENTED_CLASS, className].filter(Boolean).join(' ')
+            //     : className
+            // }
+            style={
+              surfaceBackground
+                ? {
+                    ...getUniToolbarControlShellStyle(token),
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    padding: 2,
+                    ...style,
+                  }
+                : style
+            }
+            {...props}
+          />
+        {/* </div> */}
       </ConfigProvider>
     );
   }

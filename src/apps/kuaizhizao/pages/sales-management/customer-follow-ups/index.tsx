@@ -442,7 +442,7 @@ const CustomerFollowUpsPage: React.FC = () => {
             <ThemedSegmented
               key="pending-scope"
               surfaceBackground
-              size="middle"
+              size="small"
               value={pendingOnlyFilter ? 'pending' : 'all'}
               onChange={(v) => setPendingOnlyFilter(v === 'pending')}
               options={[

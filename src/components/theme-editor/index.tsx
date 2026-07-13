@@ -72,7 +72,7 @@ function buildThemeConfigFromForm(
   const themeMode = (values.colorMode as 'light' | 'dark' | 'auto') || fallbackColorMode || 'light';
   const savingThemeStyle = (values.themeStyle as ThemeStyle) || 'vivid';
   const savingPlain = savingThemeStyle === 'plain';
-  const colorPrimaryValue = colorFieldToHex(values.colorPrimary, '#1890ff');
+  const colorPrimaryValue = colorFieldToHex(values.colorPrimary, '#0958D9');
   const siderBgColorValue = colorFieldToHex(values.siderBgColor, '');
   const headerBgColorValue = normalizeBgColorField(values.headerBgColor, '');
   const tabsBgColorValue = normalizeBgColorField(values.tabsBgColor, '');
@@ -294,7 +294,7 @@ const ThemeEditor: React.FC<ThemeEditorProps> = ({ open, onClose, onThemeUpdate 
     .sort((a, b) => b.brightness - a.brightness); // 按从浅到深排序（亮度从高到低）
 
   // 使用 useState 管理表单值变化（避免在 Form 外部使用 Form.useWatch）
-  const [colorPrimaryValue, setColorPrimaryValue] = useState<string>('#1890ff');
+  const [colorPrimaryValue, setColorPrimaryValue] = useState<string>('#0958D9');
   const [siderBgColorValue, setSiderBgColorValue] = useState<string>('');
   const [headerBgColorValue, setHeaderBgColorValue] = useState<string>('');
   const [tabsBgColorValue, setTabsBgColorValue] = useState<string>('');
@@ -306,7 +306,7 @@ const ThemeEditor: React.FC<ThemeEditorProps> = ({ open, onClose, onThemeUpdate 
   /**
    * 规范化颜色值为字符串格式（用于 ColorPicker 的 value 属性）
    */
-  const normalizeColorValue = (color: any, defaultValue: string = '#1890ff'): string => {
+  const normalizeColorValue = (color: any, defaultValue: string = '#0958D9'): string => {
     if (!color) return defaultValue;
     if (typeof color === 'string') return color;
 
@@ -342,9 +342,9 @@ const ThemeEditor: React.FC<ThemeEditorProps> = ({ open, onClose, onThemeUpdate 
 
   // 规范化后的颜色值（使用 useMemo 确保始终是字符串）
   const normalizedColorPrimary = useMemo(() => {
-    const normalized = normalizeColorValue(colorPrimaryValue, token.colorPrimary || '#1890ff');
+    const normalized = normalizeColorValue(colorPrimaryValue, token.colorPrimary || '#0958D9');
     // 确保返回值是有效的字符串，避免传递 undefined 或 null
-    return normalized || token.colorPrimary || '#1890ff';
+    return normalized || token.colorPrimary || '#0958D9';
   }, [colorPrimaryValue, token.colorPrimary]);
 
   const normalizedSiderBgColor = useMemo(() => {
@@ -414,7 +414,7 @@ const ThemeEditor: React.FC<ThemeEditorProps> = ({ open, onClose, onThemeUpdate 
         return Number.isFinite(n) ? n : fallback;
       };
 
-      const colorPrimaryValue = applied.colorPrimary || '#1890ff';
+      const colorPrimaryValue = applied.colorPrimary || '#0958D9';
 
       const currentBorderRadius = clampBorderRadius(applied.borderRadius);
       const currentFontSize = clampFontSize(applied.fontSize);
@@ -474,7 +474,7 @@ const ThemeEditor: React.FC<ThemeEditorProps> = ({ open, onClose, onThemeUpdate 
     const algorithm = baseAlgorithm;
 
     const token = {
-      colorPrimary: values.colorPrimary || '#1890ff',
+      colorPrimary: values.colorPrimary || '#0958D9',
       borderRadius: readBorderRadius(values.borderRadius),
       fontSize: readFontSize(values.fontSize),
     };
@@ -493,7 +493,7 @@ const ThemeEditor: React.FC<ThemeEditorProps> = ({ open, onClose, onThemeUpdate 
     if (changedValues.colorPrimary) {
       const colorValue = typeof changedValues.colorPrimary === 'string'
         ? changedValues.colorPrimary
-        : changedValues.colorPrimary.toHexString?.() || '#1890ff';
+        : changedValues.colorPrimary.toHexString?.() || '#0958D9';
       allValues.colorPrimary = colorValue;
       setColorPrimaryValue(colorValue);
     }
@@ -571,7 +571,7 @@ const ThemeEditor: React.FC<ThemeEditorProps> = ({ open, onClose, onThemeUpdate 
    * 同步主色到表单、预览与 themeStore（预设色与自定义色共用）
    */
   const applyColorPrimaryChange = (color: string, allValues?: Record<string, unknown>) => {
-    const colorPrimaryValue = colorFieldToHex(color, '#1890ff');
+    const colorPrimaryValue = colorFieldToHex(color, '#0958D9');
     form.setFieldValue('colorPrimary', colorPrimaryValue);
     setColorPrimaryValue(colorPrimaryValue);
     const mergedValues = {
@@ -597,7 +597,7 @@ const ThemeEditor: React.FC<ThemeEditorProps> = ({ open, onClose, onThemeUpdate 
       const values = await form.validateFields();
       values.colorPrimary = colorFieldToHex(
         form.getFieldValue('colorPrimary') ?? values.colorPrimary,
-        '#1890ff',
+        '#0958D9',
       );
 
 
@@ -697,8 +697,9 @@ const ThemeEditor: React.FC<ThemeEditorProps> = ({ open, onClose, onThemeUpdate 
 
       // 1. 设置默认值
       const defaultThemeConfig = {
-        colorPrimary: '#1890ff',
-        borderRadius: 6,
+        colorPrimary: '#0958D9',
+        colorBgActiveButton: '#1A69E8',
+        borderRadius: 16,
         fontSize: 14,
         siderBgColor: '',
         headerBgColor: '',
@@ -709,7 +710,7 @@ const ThemeEditor: React.FC<ThemeEditorProps> = ({ open, onClose, onThemeUpdate 
       // 2. 更新本地表单和状态
       setTabsPersistenceValue(true);
       setColorMode('light');
-      setColorPrimaryValue('#1890ff');
+      setColorPrimaryValue('#0958D9');
       setSiderBgColorValue('');
       setHeaderBgColorValue('');
       setTabsBgColorValue('');
@@ -824,8 +825,8 @@ const ThemeEditor: React.FC<ThemeEditorProps> = ({ open, onClose, onThemeUpdate 
             layout="vertical"
             onValuesChange={handleValuesChange}
             initialValues={{
-              colorPrimary: '#1890ff',
-              borderRadius: 6,
+              colorPrimary: '#0958D9',
+              borderRadius: 16,
               fontSize: 14,
               colorMode: 'light',
               layoutMode: 'mix',
@@ -852,7 +853,7 @@ const ThemeEditor: React.FC<ThemeEditorProps> = ({ open, onClose, onThemeUpdate 
                       borderRadius: 8,
                       transition: 'all 0.2s',
                       backgroundColor: form.getFieldValue('colorMode') === 'light'
-                        ? `${token.colorPrimary || '#1890ff'}15`
+                        ? `${token.colorPrimary || '#0958D9'}15`
                         : 'transparent',
                     }}
                     onClick={() => {
@@ -875,7 +876,7 @@ const ThemeEditor: React.FC<ThemeEditorProps> = ({ open, onClose, onThemeUpdate 
                       style={{
                         fontSize: 32,
                         color: form.getFieldValue('colorMode') === 'light'
-                          ? token.colorPrimary || '#1890ff'
+                          ? token.colorPrimary || '#0958D9'
                           : '#8c8c8c',
                         marginBottom: 8,
                         display: 'block',
@@ -893,7 +894,7 @@ const ThemeEditor: React.FC<ThemeEditorProps> = ({ open, onClose, onThemeUpdate 
                       borderRadius: 8,
                       transition: 'all 0.2s',
                       backgroundColor: form.getFieldValue('colorMode') === 'dark'
-                        ? `${token.colorPrimary || '#1890ff'}15`
+                        ? `${token.colorPrimary || '#0958D9'}15`
                         : 'transparent',
                     }}
                     onClick={() => {
@@ -916,7 +917,7 @@ const ThemeEditor: React.FC<ThemeEditorProps> = ({ open, onClose, onThemeUpdate 
                       style={{
                         fontSize: 32,
                         color: form.getFieldValue('colorMode') === 'dark'
-                          ? token.colorPrimary || '#1890ff'
+                          ? token.colorPrimary || '#0958D9'
                           : '#8c8c8c',
                         marginBottom: 8,
                         display: 'block',
@@ -934,7 +935,7 @@ const ThemeEditor: React.FC<ThemeEditorProps> = ({ open, onClose, onThemeUpdate 
                       borderRadius: 8,
                       transition: 'all 0.2s',
                       backgroundColor: form.getFieldValue('colorMode') === 'auto'
-                        ? `${token.colorPrimary || '#1890ff'}15`
+                        ? `${token.colorPrimary || '#0958D9'}15`
                         : 'transparent',
                     }}
                     onClick={() => {
@@ -957,7 +958,7 @@ const ThemeEditor: React.FC<ThemeEditorProps> = ({ open, onClose, onThemeUpdate 
                       style={{
                         fontSize: 32,
                         color: form.getFieldValue('colorMode') === 'auto'
-                          ? token.colorPrimary || '#1890ff'
+                          ? token.colorPrimary || '#0958D9'
                           : '#8c8c8c',
                         marginBottom: 8,
                         display: 'block',
@@ -1057,10 +1058,10 @@ const ThemeEditor: React.FC<ThemeEditorProps> = ({ open, onClose, onThemeUpdate 
                   label={t('components.themeEditor.common.customColor')}
                   style={{ marginBottom: 0 }}
                   getValueFromEvent={(color) => {
-                    return normalizeColorValue(color, '#1890ff');
+                    return normalizeColorValue(color, '#0958D9');
                   }}
                   normalize={(value) => {
-                    return normalizeColorValue(value, '#1890ff');
+                    return normalizeColorValue(value, '#0958D9');
                   }}
                 >
                   <ColorPicker
@@ -1537,7 +1538,7 @@ const ThemeEditor: React.FC<ThemeEditorProps> = ({ open, onClose, onThemeUpdate 
                 <div style={{
                   width: '100%',
                   height: 60,
-                  background: previewTheme?.token?.colorPrimary || '#1890ff',
+                  background: previewTheme?.token?.colorPrimary || '#0958D9',
                   borderRadius: `${readBorderRadius(previewTheme?.token?.borderRadius)}px`,
                   display: 'flex',
                   alignItems: 'center',
@@ -1546,7 +1547,7 @@ const ThemeEditor: React.FC<ThemeEditorProps> = ({ open, onClose, onThemeUpdate 
                   fontWeight: 500,
                   fontSize: 14,
                 }}>
-                  {previewTheme?.token?.colorPrimary || '#1890ff'}
+                  {previewTheme?.token?.colorPrimary || '#0958D9'}
                 </div>
               </div>
             </Card>

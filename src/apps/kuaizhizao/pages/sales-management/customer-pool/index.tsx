@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { ActionType, ProColumns } from '@ant-design/pro-components';
-import { App, Button, Form, Input, InputNumber, Modal, Popconfirm, Select, Space, Switch, Tag } from 'antd';
+import { App, Button, Form, Input, InputNumber, Modal, Popconfirm, Segmented, Select, Space, Switch, Tag } from 'antd';
 import {
   PlusOutlined,
   UserAddOutlined,
@@ -648,6 +648,19 @@ const CustomerPoolPage: React.FC = () => {
                 { label: t('app.kuaizhizao.customerPool.scopePublic'), value: 'pool' },
               ]}
             />
+            // <div className="dashboard-kpi-panel-toolbar" >
+            //     <Segmented
+            //       className="dashboard-kpi-panel-segmented"
+            //       value={scope}
+            //       options={[
+            //         { label: t('app.kuaizhizao.customerPool.scopeAll'), value: 'all' },
+            //         { label: t('app.kuaizhizao.customerPool.scopePrivate'), value: 'mine' },
+            //         { label: t('app.kuaizhizao.customerPool.scopePublic'), value: 'pool' },
+            //       ]}
+            //       onChange={(v) => handleScopeChange(v as 'pool' | 'mine' | 'all')}
+            //       size="small"
+            //     />
+            //   </div>
           }
           showCreateButton={canCreateCustomer}
           createButtonText={t('app.master-data.customers.create')}

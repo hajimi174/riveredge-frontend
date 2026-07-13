@@ -578,7 +578,7 @@ export default function DashboardPage() {
       >
       {/* 左右两大组：左 19（欢迎行 + KPI + 下区）；右 5（日历天气时钟 + 快捷 + 版本） */}
       <Row gutter={[DASHBOARD_LAYOUT_GUTTER, DASHBOARD_LAYOUT_GUTTER]} align="stretch" className="dashboard-main-body" style={{ flex: 1, minHeight: 0, height: '100%', overflow: 'hidden' }}>
-        <Col xs={24} lg={19} className="dashboard-main-scroll-col" style={{ display: 'flex', flexDirection: 'column', gap: DASHBOARD_LAYOUT_GUTTER, minHeight: 0, minWidth: 0 }}>
+        <Col xs={24} lg={24} className="dashboard-main-scroll-col" style={{ display: 'flex', flexDirection: 'column', gap: DASHBOARD_LAYOUT_GUTTER, minHeight: 0, minWidth: 0 }}>
           <div
             className="dashboard-left-top-block"
             style={{
@@ -927,7 +927,8 @@ export default function DashboardPage() {
       </Row>
         </Col>
 
-        <Col xs={24} lg={5} className="dashboard-main-scroll-col" style={{ display: 'flex', flexDirection: 'column', gap: DASHBOARD_LAYOUT_GUTTER, minHeight: 0, minWidth: 0 }}>
+        {/* 右侧栏（日历/快捷入口/版本 */}
+        {/* <Col xs={24} lg={5} className="dashboard-main-scroll-col" style={{ display: 'flex', flexDirection: 'column', gap: DASHBOARD_LAYOUT_GUTTER, minHeight: 0, minWidth: 0 }}>
           <DashboardCalendarWeatherClock
             currentTime={currentTime}
             isDark={isDark}
@@ -936,7 +937,6 @@ export default function DashboardPage() {
             t={t}
             onWeatherChange={setWeatherForDashboard}
           />
-          {/* 右侧下区：快捷入口 + 使用小提示/版本 */}
           <div
             className="dashboard-right-bottom-section"
             style={{
@@ -971,8 +971,7 @@ export default function DashboardPage() {
               onCopyCommit={copyPlatformCommit}
             />
           </div>
-
-        </Col>
+        </Col> */}
       </Row>
       </div>
       </div>

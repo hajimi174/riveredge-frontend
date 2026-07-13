@@ -296,12 +296,50 @@
   height: 0;
 }
 
+/* === 字体声明 === */
+@font-face {
+  font-family: "OPPOSans";
+  src: url("./assets/font/OPPOSans4.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "OPPOSans";
+  src: url("./assets/font/OPPOSans4.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "OPPOSans";
+  src: url("./assets/font/OPPOSans4.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "OPPOSans";
+  src: url("./assets/font/OPPOSans4.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "OPPOSans";
+  src: url("./assets/font/OPPOSans4.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+
 html,
 body {
   margin: 0;
   padding: 0;
   height: 100%;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'PingFang SC', 'Hiragino Sans GB',
+  font-family: "OPPOSans",  -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'PingFang SC', 'Hiragino Sans GB',
     'Microsoft YaHei', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
   // B 端项目核心优化：虽然不再强制使用全等宽字体，但保留数字的等宽特性（表格对齐必须）
   font-variant-numeric: tabular-nums; 
@@ -318,7 +356,7 @@ body {
 html.locale-en,
 html.locale-en body,
 html.locale-en #root {
-  font-family: var(--riveredge-ui-font-family);
+  font-family: "OPPOSans", var(--riveredge-ui-font-family);
 }
 
 #root {
@@ -1394,6 +1432,27 @@ code {
 .uni-table-container.uni-table-scroll-y-mode .ant-table .ant-table-fixed-left .ant-table-body-outer,
 .uni-table-container.uni-table-scroll-y-mode .ant-table .ant-table-fixed-right .ant-table-body-outer {
   overflow-y: auto !important;
+}
+
+/* UniTable：去掉行分界线，去掉表头背景色，表头字段灰色 */
+.uni-table-container {
+  .ant-table-thead > tr > th {
+    background: transparent !important;
+    border-bottom: none !important;
+    color: #00000073 !important;
+  }
+  .ant-table-tbody > tr > td {
+    border-bottom: none !important;
+  }
+  .ant-table-tbody > tr > td:first-child {
+    border-top-left-radius: 16px;
+    border-bottom-left-radius: 16px;
+  }
+
+  .ant-table-tbody > tr > td:last-child {
+    border-top-right-radius: 16px;
+    border-bottom-right-radius: 16px;
+  }
 }
 
 /* 指定 Modal 不显示标题左侧竖条（如工序派工等） */
@@ -2527,7 +2586,7 @@ code {
   font-size: 14px;
   font-weight: 600;
   line-height: 1.3;
-  color: #000;
+  color: #000000A6;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -2619,7 +2678,8 @@ code {
 }
 .dashboard-feed-item {
   padding: 12px 4px;
-  border-bottom: 1px solid var(--ant-color-split, rgba(0, 0, 0, 0.06));
+  // border-bottom: 1px solid var(--ant-color-split, rgba(0, 0, 0, 0.06));
+  border-radius: 16px;
 }
 .dashboard-feed-item:last-child {
   border-bottom: none;
@@ -2631,13 +2691,14 @@ code {
 .dashboard-feed-item--interactive {
   cursor: pointer;
   transition: background 0.2s ease;
-  border-radius: 8px;
+  border-radius: 16px;
   margin: 0 -4px;
   padding-left: 8px;
   padding-right: 8px;
 }
 .dashboard-feed-item--interactive:hover {
   background: var(--ant-color-fill-quaternary, rgba(0, 0, 0, 0.02));
+  border-radius: 16px;
 }
 .dashboard-feed-item__row {
   display: flex;
@@ -2702,7 +2763,7 @@ code {
   border-bottom: 1px solid var(--ant-color-split, rgba(0, 0, 0, 0.06));
   cursor: pointer;
   transition: background 0.2s ease;
-  border-radius: 8px;
+  border-radius: 16px;
   margin: 0 -4px;
   padding-left: 8px;
   padding-right: 8px;
@@ -2779,9 +2840,26 @@ code {
 .dashboard-kpi-panel .dashboard-kpi-panel-toolbar::-webkit-scrollbar {
   display: none;
 }
+/* 外层 */
 .dashboard-kpi-panel-segmented.ant-segmented {
-  max-width: 100%;
+  border-radius: 16px;   
 }
+
+/* 每个选项 */
+.dashboard-kpi-panel-segmented .ant-segmented-item {
+  border-radius: 16px;
+  padding: 4px 8px;
+}
+
+.dashboard-kpi-panel-segmented .ant-segmented-item-selected,
+.dashboard-kpi-panel-segmented .ant-segmented-thumb {
+  border-radius: 16px !important;
+}
+
+.dashboard-kpi-panel-segmented .ant-segmented-item:hover {
+  border-radius: 16px;
+}
+
 /* 5 列单行；窄屏自动折行，列间竖线分隔 */
 .dashboard-kpi-panel-grid {
   display: grid;
@@ -2837,12 +2915,15 @@ code {
   box-sizing: border-box;
   background: var(--ant-color-bg-container, #fff);
   transition: background-color 0.2s ease;
+  border-radius: 16px;
 }
 .dashboard-kpi-cell:hover {
-  background: var(
-    --ant-color-primary-bg,
-    color-mix(in srgb, var(--ant-color-primary, #1677ff) 10%, var(--ant-color-bg-container, #fff))
-  ) !important;
+  position: relative;
+  z-index: 1;
+  border-color: var(--ant-color-border, var(--ant-colorBorder, #d9d9d9));
+  box-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.07),
+    0 6px 16px rgba(0, 0, 0, 0.11);
 }
 .dashboard-kpi-cell-inner {
   display: flex;
@@ -2864,7 +2945,7 @@ code {
   margin-top: 4px;
   padding: 10px 12px;
   border-top: none;
-  border-radius: 6px;
+  border-radius: 16px;
   background: var(--ant-color-fill-tertiary, rgba(0, 0, 0, 0.06));
 }
 .dashboard-kpi-cell-footer-divider {

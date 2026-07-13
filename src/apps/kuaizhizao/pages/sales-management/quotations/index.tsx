@@ -3253,7 +3253,7 @@ const QuotationsPage: React.FC = () => {
             <ThemedSegmented
               key="quotation-list-scope"
               surfaceBackground
-              size="middle"
+              size="small"
               value={listScopeFilter}
               onChange={(v) => handleListScopeFilterChange(v as QuotationListScope)}
               options={[

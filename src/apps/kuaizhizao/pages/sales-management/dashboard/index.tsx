@@ -480,7 +480,7 @@ const SalesDashboard: React.FC = () => {
 
 
   return (
-    <UniDashboard className="sales-module-dashboard" style={{ padding: 0, overflow: 'visible' }}>
+    <UniDashboard showSidebar={false} className="sales-module-dashboard" style={{ padding: 0, overflow: 'visible' }}>
       <Spin spinning={summaryLoading && !s}>
         <Row gutter={[16, 16]}>
           {/* KPI 区 */}

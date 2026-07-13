@@ -215,7 +215,7 @@ export default function DashboardKpiPanel({
         },
       }}
     >
-      <div className="dashboard-kpi-panel-toolbar" style={{ marginBottom: layoutGutter }}>
+      <div className="dashboard-kpi-panel-toolbar" style={{ marginBottom: layoutGutter}}>
         <Segmented
           className="dashboard-kpi-panel-segmented"
           value={timeRange}

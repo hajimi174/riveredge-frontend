@@ -4570,6 +4570,11 @@ export default function BasicLayout({ children }: { children: React.ReactNode })
             height: auto !important;
           }
         }
+        /* 顶栏右侧操作按钮：统一背景色（通知、语言、主题色、全屏、客户端下载） */
+        .ant-pro-layout .ant-pro-layout-header .ant-btn-text,
+        .ant-pro-layout .ant-layout-header .ant-btn-text {
+          background: rgba(0, 0, 0, 0.10) !important;
+        }
         /* 平板和手机模式下隐藏面包屑 - 放在最后，确保最高优先级 */
         @media (max-width: 1024px) {
           .ant-pro-layout-container .ant-layout-header .ant-breadcrumb,
@@ -5103,6 +5108,7 @@ export default function BasicLayout({ children }: { children: React.ReactNode })
                 style={{
                   display: 'flex',
                   alignItems: 'center',
+                  // borderRadius: '16px'
                 }}
               >
                 <TenantSelector headerLightText={!isLightModeLightBg} />
